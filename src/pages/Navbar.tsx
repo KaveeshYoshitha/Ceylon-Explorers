@@ -15,11 +15,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed w-full z-50 bg-[#ffffffb5] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-[#1b9470] cursor-pointer">
+        <span className="text-2xl font-bold text-[#1b9470] cursor-pointer">
           <a href="#home">Ceylon Explorers</a>
-        </h1>
+        </span>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-gray-800 font-medium">

@@ -31,10 +31,11 @@ const Testimonials = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">
-            What Our<span className='text-[#f2a711]' > Travelers</span> Say
+            What Our<span className="text-[#f2a711]"> Travelers</span> Say
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from travelers who have experienced the magic of Sri Lanka with our tours
+            Hear from travelers who have experienced the magic of Sri Lanka with
+            our tours
           </p>
         </div>
 
@@ -63,6 +64,9 @@ const Testimonials = () => {
                   src={t.img}
                   alt={t.name}
                   className="w-12 h-12 rounded-full mr-4"
+                  width="auto"
+                  height="auto"
+                  loading="lazy"
                 />
                 <div>
                   <h4 className="font-medium text-secondary">{t.name}</h4>
@@ -73,11 +77,9 @@ const Testimonials = () => {
           ))}
         </div>
         <div className="text-center mt-6">
-            <h3
-            className="text-2xl font-heading font-bold text-secondary text-[#1b9470] transition-transform duration-500 hover:scale-105 hover:underline "
-            >
-            Read More Reviews on Google 
-            </h3>
+          <h3 className="text-2xl font-heading font-bold text-secondary text-[#1b9470] transition-transform duration-500 hover:scale-105 hover:underline ">
+            Read More Reviews on Google
+          </h3>
         </div>
       </div>
     </section>

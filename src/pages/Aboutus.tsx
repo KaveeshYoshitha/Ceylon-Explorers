@@ -4,7 +4,10 @@ import TripAdvicer from "../assets/tripAdvicer.webp";
 
 const Aboutus = () => {
   return (
-    <section id="aboutus" className="py-20 pt-32 px-8 bg-white cursor-default-must">
+    <section
+      id="aboutus"
+      className="py-20 pt-32 px-8 bg-white cursor-default-must"
+    >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
@@ -13,22 +16,41 @@ const Aboutus = () => {
               About <span className="text-[#f2a711]">Ceylon Explorers</span>
             </h2>
             <p className="text-gray-600 mb-5 leading-relaxed">
-              Founded in 2010, Ceylon Explorers is a premier tourism agency based in Colombo, Sri Lanka. 
-              We specialize in creating immersive travel experiences that showcase the natural beauty, 
-              rich cultural heritage, and warm hospitality of our island nation.
+              Founded in 2010, Ceylon Explorers is a premier tourism agency
+              based in Colombo, Sri Lanka. We specialize in creating immersive
+              travel experiences that showcase the natural beauty, rich cultural
+              heritage, and warm hospitality of our island nation.
             </p>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              Our team of experienced travel experts and local guides are passionate about sharing the 
-              authentic Sri Lanka with travelers from around the world. We believe in sustainable tourism 
-              practices that benefit local communities while preserving our natural and cultural treasures.
+              Our team of experienced travel experts and local guides are
+              passionate about sharing the authentic Sri Lanka with travelers
+              from around the world. We believe in sustainable tourism practices
+              that benefit local communities while preserving our natural and
+              cultural treasures.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 mb-10">
-              <StatCard icon={<FaRoute />} value="500+" label="Tours Completed" />
-              <StatCard icon={<FaUsers />} value="2,500+" label="Happy Travelers" />
-              <StatCard icon={<FaMedal />} value="12+" label="Years Experience" />
-              <StatCard icon={<FaMapMarkedAlt />} value="25+" label="Destinations" />
+              <StatCard
+                icon={<FaRoute />}
+                value="500+"
+                label="Tours Completed"
+              />
+              <StatCard
+                icon={<FaUsers />}
+                value="2,500+"
+                label="Happy Travelers"
+              />
+              <StatCard
+                icon={<FaMedal />}
+                value="12+"
+                label="Years Experience"
+              />
+              <StatCard
+                icon={<FaMapMarkedAlt />}
+                value="25+"
+                label="Destinations"
+              />
             </div>
 
             {/* CTA Button */}
@@ -44,6 +66,9 @@ const Aboutus = () => {
                 className="w-full h-auto object-cover"
                 src={Tourist}
                 alt="Sri Lanka tourism team of diverse guides and travel experts"
+                width="600"
+                height="400"
+                loading="lazy"
               />
             </div>
 
@@ -54,6 +79,9 @@ const Aboutus = () => {
                   src={TripAdvicer}
                   alt="TripAdvisor"
                   className="h-8 mb-2"
+                  width="auto"
+                  height="auto"
+                  loading="lazy"
                 />
               </div>
               <div className="flex justify-center text-[#f2a711] mb-1">
