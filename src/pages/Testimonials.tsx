@@ -1,4 +1,7 @@
 import {FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const testimonials = [
   {
@@ -25,27 +28,54 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+    const container = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        gsap.from('.testimonials-text', {
+            scrollTrigger: {
+                trigger: container.current,
+                start: 'top 80%',
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+        });
+
+        gsap.from('.testimonial-card', {
+            scrollTrigger: {
+                trigger: '.testimonials-grid',
+                start: 'top 85%',
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+        });
+    }, { scope: container });
+
   return (
-    <section id="testimonials" className="py-20 bg-gray-50 cursor-default-must">
+    <section ref={container} id="testimonials" className="py-20 bg-gray-50 cursor-default-must">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">
+          <h2 className="testimonials-text text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">
             What Our<span className="text-[#f2a711]"> Travelers</span> Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="testimonials-text text-lg text-gray-600 max-w-3xl mx-auto">
             Hear from travelers who have experienced the magic of Sri Lanka with
             our tours
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
           {testimonials.map((t, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-8 shadow-2xl"
-              style={{ transitionDelay: `${index * 0.2}s` }}
+              className="testimonial-card bg-white rounded-xl p-8 shadow-2xl"
             >
               {/* Rating */}
               <div className="flex text-accent mb-4 text-[#f2a711]">

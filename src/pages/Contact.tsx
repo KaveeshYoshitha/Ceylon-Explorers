@@ -1,15 +1,55 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone, faEnvelope, faClock } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 const Contact = () => {
+    const container = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        gsap.from('.contact-header', {
+            scrollTrigger: {
+                trigger: container.current,
+                start: 'top 80%',
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+        });
+
+        gsap.from('.contact-form-container', {
+            scrollTrigger: {
+                trigger: '.contact-grid',
+                start: 'top 80%',
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+        });
+
+        gsap.from('.contact-info-container', {
+            scrollTrigger: {
+                trigger: '.contact-grid',
+                start: 'top 80%',
+            },
+            x: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+        });
+    }, { scope: container });
+
   return (
-    <section id="contact" className="py-20 bg-gray-50 cursor-default-must">
+    <section ref={container} id="contact" className="py-20 bg-gray-50 cursor-default-must">
       <div className="container mx-auto px-4">
         
         {/* Section Title */}
-        <div className="text-center mb-16">
+        <div className="contact-header text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#f2a711] mb-4">
             Get In Touch
           </h2>
@@ -18,10 +58,10 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="contact-grid grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Contact Form */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="contact-form-container bg-white rounded-xl p-8 shadow-lg">
             <h3 className="text-2xl font-heading font-bold text-[#f2a711] mb-6">
               Send Us a Message
             </h3>
@@ -85,7 +125,7 @@ const Contact = () => {
           </div>
           
           {/* Contact Info + Map */}
-          <div>
+          <div className="contact-info-container">
             <div className="bg-white rounded-xl p-8 shadow-lg mb-8">
               <h3 className="text-2xl font-heading font-bold text-[#f2a711] mb-6">
                 Contact Information

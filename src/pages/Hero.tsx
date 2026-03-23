@@ -1,8 +1,37 @@
+import { useRef } from 'react';
 import heroImage from '../assets/Beach.webp';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Hero = () => {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.from('h1', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+    })
+    .from('p', {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+    }, '-=0.6')
+    .from('.hero-btn-wrapper', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+    }, '-=0.6');
+  }, { scope: container });
+
   return (
     <section
+      ref={container}
       id="home"
       className="relative h-[800px] flex items-center justify-center cursor-default"
       style={{
@@ -21,17 +50,21 @@ const Hero = () => {
           Experience breathtaking landscapes, ancient cultures, and unforgettable adventures with our curated tours.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <button
-          className="bg-[#f2a711] hover:bg-[#ffd071] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-opacity-90 transition-all transform hover:scale-105"
-          style={{ transitionDuration: '0.4s' }}
-        >
-            Start Planning Your Trip
-        </button>
-          <button className="bg-white hover:bg-[#ededed] text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-opacity-90 transition-all transform hover:scale-105" 
-          style={{ transitionDuration: '0.4s' }}
-          >
-            Explore Tour Packages
-          </button>
+          <div className="hero-btn-wrapper">
+            <button
+              className="bg-[#f2a711] hover:bg-[#ffd071] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-opacity-90 transition-all transform hover:scale-105"
+              style={{ transitionDuration: '0.4s' }}
+            >
+                Start Planning Your Trip
+            </button>
+          </div>
+          <div className="hero-btn-wrapper">
+            <button className="bg-white hover:bg-[#ededed] text-secondary px-8 py-4 rounded-full font-medium text-lg hover:bg-opacity-90 transition-all transform hover:scale-105" 
+            style={{ transitionDuration: '0.4s' }}
+            >
+              Explore Tour Packages
+            </button>
+          </div>
         </div>
       </div>
 

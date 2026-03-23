@@ -1,15 +1,34 @@
 import { FaLeaf, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLocationDot, FaPhone, FaEnvelope } from "react-icons/fa6";
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Footer: React.FC = () => {
+    const container = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        gsap.from('.footer-col', {
+            scrollTrigger: {
+                trigger: container.current,
+                start: 'top 90%',
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+        });
+    }, { scope: container });
+
   return (
-    <footer id="footer" className="bg-gray-900 text-white pt-16 pb-8 px-6 cursor-default-must">
+    <footer ref={container} id="footer" className="bg-gray-900 text-white pt-16 pb-8 px-6 cursor-default-must">
       <div className="container mx-auto px-4">
         
         {/* Top Footer Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
           {/* Brand */}
-          <div>
+          <div className="footer-col">
             <div className="flex items-center mb-6">
               <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-2">
                 <FaLeaf />
@@ -28,7 +47,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="footer-col">
             <h4 className="text-lg font-heading font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
@@ -51,7 +70,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Popular Tours */}
-          <div>
+          <div className="footer-col">
             <h4 className="text-lg font-heading font-semibold mb-6">Popular Tours</h4>
             <ul className="space-y-3">
               {[
@@ -71,7 +90,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="footer-col">
             <h4 className="text-lg font-heading font-semibold mb-6">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -91,7 +110,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-gray-800 pt-8 footer-col">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               © 2025 Ceylon Explorers. All Rights Reserved.
